@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+<div class="homepage">
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="{{url_for('static', filename="images/slider2.jpg")}}" alt="slide 1"></div>
+            <div class="slide"><img src="{{url_for('static', filename="images/slider3.jpg")}}" alt="slide 2"></div>
+            <div class="slide"><img src="{{url_for('static', filename="images/slider4.jpg")}}" alt="slide 3"></div>
+            <div class="slide"><img src="{{url_for('static', filename="images/slider5.jpg")}}" alt="slide 4"></div>
+            <div class="slide"><img src="{{url_for('static', filename="images/slider6.jpg")}}" alt="slide 5"></div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+    <div class="dots">
+        <span class="dot" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+        <span class="dot" onclick="goToSlide(4)"></span>
+    </div>
+</div>
+
+<div class="pro">
+    <h1>OUR PRODUCTS</h1>
+</div>
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-card">
+        <img src="{{ url_for('static', filename='images/' + product[3])}}">
+        <div class="product-content">
+            <div class="product-button">
+                <h3>{{ product[1]}}</h3>
+                <p>₹{{ product[4]}}</p>
+            </div>
+            <a href="{{ url_for('product', product_id=product[0])}}"><button>View Details</button></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js')}}"></script>
+{% endblock %}

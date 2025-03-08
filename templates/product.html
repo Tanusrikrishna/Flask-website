@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<div class="cart-container">
+    <div class="cart-product-image">
+        <img src="{{ url_for('static', filename='images/' + product[3]) }}" alt="Product Image">
+    </div>
+    <div class="cart-product-details">
+        <h2 class="cart-product-title">{{ product[1] }}</h2>
+        <p class="cart-product-price">Price: ₹{{ product[4] }}</p>
+        <p class="cart-product-size">Size: {{ product[5] }}</p>
+        <h4 class="cart-product-description-title">Description:</h4>
+        <p class="cart-product-description">This is a very good product that makes you feel better. Jewels and clothes make us happy. These are bio-friendly. Please continue shopping.</p>
+        <a href="#" class="cart-buy-now-btn">Buy Now</a>
+        <a href="{{ url_for('add_to_cart',product_id=product[0])}}" class="cart-add-to-cart-btn">Add to cart</a>
+    </div>
+</div>
+
+{% endblock %}
